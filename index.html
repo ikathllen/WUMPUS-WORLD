@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mundo do Wumpus</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="start-screen" class="screen">
+    <div class="card">
+      <h1 class="title">Mundo do Wumpus</h1>
+      <div class="config-row">
+        <label>Tamanho do mapa</label>
+        <div class="spinner">
+          <button class="spin-btn" data-target="map-size" data-dir="down">−</button>
+          <input id="input-map-size" type="number" min="3" max="7" value="4" />
+          <button class="spin-btn" data-target="map-size" data-dir="up">+</button>
+        </div>
+      </div>
+      <div class="config-row">
+        <label>Poços</label>
+        <div class="spinner">
+          <button class="spin-btn" data-target="num-pits" data-dir="down">−</button>
+          <input id="input-num-pits" type="number" min="1" max="10" value="2" />
+          <button class="spin-btn" data-target="num-pits" data-dir="up">+</button>
+        </div>
+      </div>
+      <div class="config-row">
+        <label>Wumpus</label>
+        <div class="spinner">
+          <button class="spin-btn" data-target="num-wumpus" data-dir="down">−</button>
+          <input id="input-num-wumpus" type="number" min="1" max="6" value="1" />
+          <button class="spin-btn" data-target="num-wumpus" data-dir="up">+</button>
+        </div>
+      </div>
+      <div class="config-row">
+        <label>Flechas</label>
+        <div class="spinner">
+          <button class="spin-btn" data-target="arrows" data-dir="down">−</button>
+          <input id="input-arrows" type="number" min="0" max="12" value="2" />
+          <button class="spin-btn" data-target="arrows" data-dir="up">+</button>
+        </div>
+      </div>
+      <div class="config-row">
+        <label>Movimentos</label>
+        <div class="spinner">
+          <button class="spin-btn" data-target="moves" data-dir="down">−</button>
+          <input id="input-moves" type="number" min="1" max="200" value="20" />
+          <button class="spin-btn" data-target="moves" data-dir="up">+</button>
+        </div>
+      </div>
+      <button id="clear-score-btn" class="small-btn">Limpar Placar</button>
+      <button id="start-btn" class="big-btn">Iniciar Jogo</button>
+    </div>
+  </div>
+
+  <div id="game-screen" class="screen" hidden>
+    <div class="card game-panel">
+      <button id="back-btn" class="back-btn">← Voltar</button>
+      <div class="hdr-row">
+        <div class="scoreboard">
+          <div class="score-item">Ouro <span id="gold-count">0</span></div>
+          <div class="score-item">Poços <span id="pit-count">0</span></div>
+          <div class="score-item">Devorados <span id="devoured-count">0</span></div>
+        </div>
+        <div class="counters">
+          <span id="arrow-count"></span><br />
+          <span id="move-count"></span>
+        </div>
+      </div>
+      <div id="percepts" class="info-box"></div>
+      <div id="status-message" class="info-box"></div>
+    </div>
+
+    <div id="game-board"></div>
+
+    <div class="card control-panel">
+      <div id="controls">
+        <button id="move-up">↑</button>
+        <button id="move-left">←</button>
+        <button id="move-right">→</button>
+        <button id="move-down">↓</button>
+        <button id="shoot">Atirar</button>
+        <button id="reset">Resetar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
