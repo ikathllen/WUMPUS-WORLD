@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputNumPits = document.getElementById('input-num-pits');
   const inputNumWumpus = document.getElementById('input-num-wumpus');
   const inputArrows = document.getElementById('input-arrows');
+  const originalValue = inputArrows.value;
   const inputMoves = document.getElementById('input-moves');
 
   const startBtn = document.getElementById('start-btn');
@@ -242,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePercepts();
     updateCounters();
     statusMessage.textContent = '';
-    arrows = inputArrows.value;
+    inputArrows.value = originalValue;
   }
 
   startBtn.addEventListener('click', () => {
