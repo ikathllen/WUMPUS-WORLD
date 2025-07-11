@@ -164,15 +164,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let end = false;
 
     if (wumpusPositions.some(w => w.x === x && w.y === y)) {
-      statusMessage.textContent = 'Você foi devorado pelo Wumpus!';
+      statusMessage.textContent = 'Você foi devorado pelo Wumpus!🐲';
       cntDevored++;
       end = true;
     } else if (pitPositions.some(p => p.x === x && p.y === y)) {
-      statusMessage.textContent = 'Você caiu em um poço!';
+      statusMessage.textContent = 'Você caiu em um poço!💥';
       cntPit++;
       end = true;
     } else if (goldPosition.x === x && goldPosition.y === y) {
-      statusMessage.textContent = 'Você encontrou o ouro!';
+      statusMessage.textContent = 'Você encontrou o ouro!✨';
       cntGold++;
       end = true;
     }
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateBoard();
       checkCell();
       if (!gameOver && moveCounter >= maxMoves) {
-        statusMessage.textContent = 'Limite de movimentos alcançado!';
+        statusMessage.textContent = '❌ Limite de movimentos alcançado!';
         gameOver = true;
         revealAll();
       }
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function shootArrow() {
     if (gameOver) return alert('O jogo acabou!');
-    if (arrows <= 0) return alert('Sem flechas!');
+    if (arrows <= 0) return alert('🔺 Sem flechas!');
     arrows--;
     updateCounters();
     const dir = prompt('Direção: cima/baixo/esquerda/direita');
@@ -217,11 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
       direita: { dx: 1, dy: 0 },   
     };
     const d = deltas[dir.toLowerCase()];
-    if (!d) return alert('Direção inválida!');
+    if (!d) return alert('❌ Direção inválida!');
     let { x, y } = agentPosition;
     while (x >= 0 && x < mapSize && y >= 0 && y < mapSize) {
       if (wumpusPositions.some(w => w.x === x && w.y === y)) {
-        alert('Wumpus morto!');
+        alert('Wumpus morto!⚡️');
         wumpusPositions = wumpusPositions.filter(w => !(w.x === x && w.y === y));
         updateBoard();
         return;
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       x += d.dx;
       y += d.dy;
     }
-    alert('Flecha não atingiu nada!');
+    alert('❌ Flecha não atingiu nada!');
   }
 
   function resetGame() {
@@ -242,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePercepts();
     updateCounters();
     statusMessage.textContent = '';
+    arrows = inputArrows.value;
   }
 
   startBtn.addEventListener('click', () => {
